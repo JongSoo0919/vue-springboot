@@ -3,6 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true
 })*/
 
+/*
 const target = "http://localhost:8080";
 module.exports = {
   devServer: {
@@ -14,4 +15,4 @@ module.exports = {
       }
     }
   }
-}
+}*/
