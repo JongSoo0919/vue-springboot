@@ -9,15 +9,16 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
-
+const uForm = {no: 1, name : 'vue-name', email: 'vue-email', gender: true, pwd: '1234'}
 export default {
   name: 'HomeView',
   methods: {
     getData() {
-      axios.get("http://localhost:8080/")
+      axios.put("http://localhost:8080/editById",uForm)
           .then((res) => {
             console.log(res);
           }).catch((error) => {
+            alert("error!!!");
             console.log(error);
           })
       },
