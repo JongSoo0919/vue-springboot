@@ -13,17 +13,28 @@
       </tr>
       </thead>
       <tbody>
-      <tr class="cursor-pointer" onclick="location.href = '/user/findById';">
-        <td>스티븐</td>
-        <td>jobs@shellfolder.com</td>
-        <td>2023-02-28</td>
-      </tr>
-      <tr class="cursor-pointer" onclick="location.href = '/user/findById';">
-        <td>에브릴</td>
-        <td>lavigne@shellfolder.com</td>
-        <td>2023-02-27</td>
+      <tr class="cursor-pointer" v-for="row in result" v-bind:key="row.no" onclick="location.href = '/user/findById';">
+        <td>{{ row.name }}</td>
+        <td>{{ row.email}}</td>
+        <td>{{row.regDate}}</td>
       </tr>
       </tbody>
     </table>
   </div>
 </template>
+
+<script>
+export default {
+  name : "ListView",
+  data() {
+    return {
+      result: [
+        {no: 1, name: '사용자1', email:'test1@aaaa.com', regDate: '2024-10-24'},
+        {no: 2, name: '사용자2', email:'test1@bbbb.com', regDate: '2024-10-25'},
+        {no: 3, name: '사용자3', email:'test1@cccc.com', regDate: '2024-10-27'}
+      ]
+    }
+  }
+}
+
+</script>
