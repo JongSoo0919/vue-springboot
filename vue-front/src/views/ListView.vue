@@ -24,17 +24,30 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  name : "ListView",
+  name: "ListView",
   data() {
     return {
-      result: [
-        {no: 1, name: '사용자1', email:'test1@aaaa.com', regDate: '2024-10-24'},
-        {no: 2, name: '사용자2', email:'test1@bbbb.com', regDate: '2024-10-25'},
-        {no: 3, name: '사용자3', email:'test1@cccc.com', regDate: '2024-10-27'}
-      ]
+      result: []
+    }
+  },
+  created() {
+    this.getData();
+  },
+  methods: {
+    getData() {
+      axios
+          .get("http://localhost:8080/findAll")
+          .then((response) => {
+            console.log(response);
+            this.result = response.data.data;
+          })
+          .catch((error) => {
+            console.log(error);
+          })
     }
   }
 }
-
 </script>
