@@ -2,7 +2,8 @@
   <div class="container mt-3">
     <h1 class="display-1 text-center">사용자 목록</h1>
     <div class="btn-group">
-      <a href="/user/save" class="btn btn-primary">사용자 추가</a>
+<!--      <a href="/user/save" class="btn btn-primary">사용자 추가</a>-->
+      <router-link to="/user/save" class="btn btn-primary">사용자 추가</router-link>
     </div>
     <table class="table table-hover mt-3">
       <thead class="table-dark">
