@@ -34,6 +34,7 @@ export default {
     }
   },
   created() {
+    console.log(store);
     this.getData();
   },
   methods: {
