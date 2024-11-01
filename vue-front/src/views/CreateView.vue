@@ -80,12 +80,16 @@ export default {
       axios.post('http://localhost:8080/save', this.result)
           .then((res) => {
             this.$store.commit('setUser', res.data.result);
+            sessionStorage.setItem('setUser', this.base64(res.data.result));
             this.$router.push({name: "ListView"})
             // this.$router.push({name: "SelectView"})
           })
           .catch((err) => {
             console.log(err)
           })
+    },
+    base64(user) {
+      return window.btoa(encodeURIComponent(JSON.stringify(user)));
     }
   }
 }

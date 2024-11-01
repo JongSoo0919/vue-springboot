@@ -53,7 +53,11 @@ export default {
     href(row) {
       console.log(row);
       store.commit('setUser', row);
+      sessionStorage.setItem('setUser', this.base64(row));
       this.$router.push({name: "SelectView"}); // params 대신 query 가능. 둘 다 주소창에 정보가 노출되는 위험.
+    },
+    base64(user) {
+      return window.btoa(encodeURIComponent(JSON.stringify(user)));
     }
   }
 }
