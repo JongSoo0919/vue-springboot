@@ -60,6 +60,7 @@ export default {
     edit() {},
     del() {},
     cancel() {
+      this.$store.commit('setUser', {});
       this.$router.push({name: "ListView"})
     }
   }
