@@ -25,7 +25,7 @@
 
 <script>
 import axios from "axios";
-
+import store from "@/store";
 export default {
   name: "ListView",
   data() {
@@ -50,7 +50,8 @@ export default {
     },
     href(row) {
       console.log(row);
-      this.$router.push({name: "SelectView",params: row}); // params 대신 query 가능. 둘 다 주소창에 정보가 노출되는 위험.
+      store.commit('setUser', row);
+      this.$router.push({name: "SelectView"}); // params 대신 query 가능. 둘 다 주소창에 정보가 노출되는 위험.
     }
   }
 }

@@ -16,7 +16,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "user" */ '../views/ListView.vue')
   },
   {
-    path: '/user/findById/:no',
+    path: '/user/findById',
     name: 'SelectView',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
