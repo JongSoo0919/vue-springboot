@@ -16,7 +16,7 @@
       <tr class="cursor-pointer" v-for="row in result" v-bind:key="row.no" v-on:click="$event => href(row)">
         <td>{{ row.name }}</td>
         <td>{{ row.email}}</td>
-        <td>{{row.regDate}}</td>
+        <td>{{ row.regDate}}</td>
       </tr>
       </tbody>
     </table>
@@ -50,7 +50,7 @@ export default {
     },
     href(row) {
       console.log(row);
-      this.$router.push({name: "SelectView"});
+      this.$router.push({name: "SelectView",params: row}); // params 대신 query 가능. 둘 다 주소창에 정보가 노출되는 위험.
     }
   }
 }
