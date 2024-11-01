@@ -31,18 +31,20 @@
     </form>
     <div class="d-flex">
       <div class="p-2 flex-fill d-grid">
-        <a href="/user/editById" class="btn btn-primary" @click="edit">수정</a>
+        <button class="btn btn-primary" @click="edit">수정</button>
       </div>
       <div class="p-2 flex-fill d-grid">
-        <a href="/user" class="btn btn-primary" @click="del">삭제</a>
+        <button class="btn btn-primary" @click="del">삭제</button>
       </div>
       <div class="p-2 flex-fill d-grid">
-        <a href="/user" class="btn btn-primary" @click="cancel">취소</a>
+        <button class="btn btn-primary" @click="cancel">취소</button>
       </div>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
+import store from "@/store";
 export default {
   name: "SelectView",
   data() {
@@ -57,8 +59,20 @@ export default {
     this.result = this.$store.state.user;
   },
   methods: {
-    edit() {},
-    del() {},
+    edit() {
+      this.$router.push({ name: 'UpdateView' })
+    },
+    del() {
+      axios.delete('http://localhost:8080/delete/' + this.result.no)
+          .then((res) => {
+            if (res.data.state) {
+              this.cancel();
+            } else {
+              alert(res.data.message);
+            }
+          })
+          .catch((error) => console.log(error));
+    },
     cancel() {
       this.$store.commit('setUser', {});
       this.$router.push({name: "ListView"})
